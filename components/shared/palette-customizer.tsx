@@ -111,10 +111,11 @@ export function PaletteCustomizer({ light }: { light?: boolean }) {
             ) : (
               <div className="space-y-2.5">
                 {CUSTOM_FIELDS.map(({ key, label }) => {
-                  const currentValue =
-                    custom[key] ||
-                    (activePreset.light as Record<string, string>)[key] ||
-                    "#000000";
+  const currentValue =
+    custom[key as keyof typeof custom] ??
+    activePreset.light[key as keyof typeof activePreset.light] ??
+    "#000000";
+
                   return (
                     <div key={key} className="flex items-center justify-between gap-2">
                       <label className="text-xs text-white/60 flex items-center gap-2">
