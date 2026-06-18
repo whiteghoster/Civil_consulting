@@ -41,11 +41,7 @@ export default function ContactPage() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      void data;
       setSubmitted(true);
       reset();
     } catch (err) {
@@ -67,7 +63,7 @@ export default function ContactPage() {
           <FadeUp className="max-w-2xl">
             <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-4 block">Contact</span>
             <h1 className="heading-display text-white mb-4">
-              Let's Discuss<br />
+              Let&apos;s Discuss<br />
               <span className="text-gradient">Your Project</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed">
@@ -187,7 +183,7 @@ export default function ContactPage() {
                     >
                       <div>
                         <h3 className="font-bold text-[var(--color-foreground)] text-lg mb-1">Get In Touch</h3>
-                        <p className="text-sm text-[var(--color-muted-foreground)]">Fill in your details and we'll get back to you within 24 hours.</p>
+                        <p className="text-sm text-[var(--color-muted-foreground)]">Fill in your details and we&apos;ll get back to you within 24 hours.</p>
                       </div>
 
                       <div className="grid sm:grid-cols-2 gap-4">

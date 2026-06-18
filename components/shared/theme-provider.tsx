@@ -9,6 +9,7 @@ interface ThemeProviderProps {
   children: React.ReactNode;
   attribute?: Attribute | Attribute[];
   defaultTheme?: string;
+  forcedTheme?: string;
   enableSystem?: boolean;
   disableTransitionOnChange?: boolean;
 }

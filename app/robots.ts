@@ -3,8 +3,8 @@ import { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
-      { userAgent: "*", allow: "/", disallow: ["/api/", "/admin/"] },
+      { userAgent: "*", allow: "/", disallow: ["/admin/"] },
     ],
-    sitemap: "https://structurapro.in/sitemap.xml",
+    sitemap: "https://www.saranyacivilconsulting.co.in/sitemap.xml",
   };
 }

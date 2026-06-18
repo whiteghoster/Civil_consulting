@@ -1,10 +1,6 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight, Phone } from "lucide-react";
-import { FadeUp } from "@/components/shared/motion";
 import { CONTACT_INFO } from "@/lib/data";
 
 export function CTASection() {
@@ -50,7 +46,7 @@ export function CTASection() {
 
       <div className="container-wide section-padding relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          <FadeUp>
+          <div>
             {/* Badge - Different style from hero */}
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[var(--color-primary)]/10 border border-[var(--color-primary)]/30 text-[var(--color-primary)] text-sm font-medium mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] animate-pulse" />
@@ -66,12 +62,12 @@ export function CTASection() {
             {/* Subtitle - Uses muted foreground */}
             <p className="text-[var(--color-muted-foreground)] text-lg leading-relaxed mb-10">
               Get in touch with our expert team for a free consultation. 
-              Let's discuss how we can bring your project to life.
+              Let&apos;s discuss how we can bring your project to life.
             </p>
-          </FadeUp>
+          </div>
 
           {/* CTA Buttons */}
-          <FadeUp delay={0.15} className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
               className="group inline-flex items-center gap-2 px-7 py-3.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/85 text-[var(--color-accent-foreground)] font-semibold rounded-xl transition-all duration-200 hover:shadow-xl hover:shadow-[var(--color-accent)]/25 hover:-translate-y-0.5"
@@ -86,7 +82,7 @@ export function CTASection() {
               <Phone className="w-4 h-4 text-[var(--color-accent)]" />
               {CONTACT_INFO.phone}
             </a>
-          </FadeUp>
+          </div>
         </div>
       </div>
     </section>

@@ -6,7 +6,7 @@ import { AuroraBackground } from "@/components/shared/aurora-background";
 
 export const metadata: Metadata = {
   title: "Project Gallery",
-  description: "Explore StructuraPro's portfolio of 250+ projects across residential, commercial, infrastructure, and green buildings.",
+  description: "Explore Saranya Civil Consulting project examples across residential, commercial, infrastructure, and green buildings.",
 };
 
 export default function ProjectsPage() {

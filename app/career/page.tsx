@@ -4,9 +4,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { MapPin, Clock, Briefcase, ArrowRight, CheckCircle2, Send, Users, TrendingUp, Heart, Coffee } from "lucide-react";
+import { MapPin, Briefcase, ArrowRight, CheckCircle2, Send, Users, TrendingUp, Heart, Coffee } from "lucide-react";
 import { FadeUp, StaggerContainer, staggerItem } from "@/components/shared/motion";
-import { CTASection } from "@/components/sections/cta";
 import { OPENINGS } from "@/lib/data";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -40,11 +39,7 @@ export default function CareerPage() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      await fetch("/api/career", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      void data;
       setSubmitted(true);
       reset();
     } catch (err) {
@@ -68,7 +63,7 @@ export default function CareerPage() {
               <span className="text-gradient">With Purpose</span>
             </h1>
             <p className="text-white/60 text-lg leading-relaxed">
-              We're looking for engineers who want to do the best work of their careers. If you believe infrastructure shapes civilization, you belong here.
+              We&apos;re looking for engineers who want to do the best work of their careers. If you believe infrastructure shapes civilization, you belong here.
             </p>
           </FadeUp>
         </div>
@@ -78,7 +73,7 @@ export default function CareerPage() {
       <section className="py-20 bg-[var(--color-card)]">
         <div className="container-wide section-padding">
           <FadeUp className="text-center mb-12">
-            <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join StructuraPro</span>
+            <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-3 block">Why Join Saranya Civil Consulting</span>
             <h2 className="heading-xl text-[var(--color-foreground)]">
               A Place Where Engineers <span className="text-gradient">Thrive</span>
             </h2>
@@ -102,7 +97,7 @@ export default function CareerPage() {
 
           <FadeUp delay={0.2} className="mt-10">
             <div className="glass-card dark:glass-card rounded-2xl p-8 max-w-4xl mx-auto">
-              <h3 className="font-bold text-[var(--color-foreground)] mb-4">Work Culture at StructuraPro</h3>
+              <h3 className="font-bold text-[var(--color-foreground)] mb-4">Work Culture at Saranya Civil Consulting</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   "Data-driven decision making",
@@ -178,7 +173,7 @@ export default function CareerPage() {
               <span className="text-accent text-sm font-semibold tracking-widest uppercase mb-3 block">Apply Now</span>
               <h2 className="heading-lg text-[var(--color-foreground)] mb-3">Start Your Application</h2>
               <p className="text-[var(--color-muted-foreground)] text-sm">
-                Can't find a perfect match? Apply anyway — we always have room for exceptional talent.
+                Can&apos;t find a perfect match? Apply anyway — we always have room for exceptional talent.
               </p>
             </FadeUp>
 
@@ -282,14 +277,14 @@ export default function CareerPage() {
                       <textarea
                         {...register("message")}
                         rows={4}
-                        placeholder="Tell us about yourself, your key projects, and why you want to join StructuraPro..."
+                        placeholder="Tell us about yourself, your key projects, and why you want to join Saranya Civil Consulting..."
                         className="w-full px-4 py-2.5 rounded-xl bg-[var(--color-muted)] border border-[var(--color-border)] text-[var(--color-foreground)] placeholder-[var(--color-muted-foreground)] text-sm outline-none focus:border-accent/50 focus:ring-2 focus:ring-accent/10 transition-all resize-none"
                       />
                     </div>
 
                     <p className="text-xs text-[var(--color-muted-foreground)]">
                       * Please email your resume to{" "}
-                      <a href="mailto:careers@structurapro.in" className="text-accent">careers@structurapro.in</a>{" "}
+                      <a href="mailto:careers@saranyacivilconsulting.co.in" className="text-accent">careers@saranyacivilconsulting.co.in</a>{" "}
                       along with this form.
                     </p>
 

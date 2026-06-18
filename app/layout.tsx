@@ -3,11 +3,8 @@ import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "@/components/shared/theme-provider";
-import { PaletteProvider } from "@/components/shared/palette-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { CursorGlow } from "@/components/shared/cursor-glow";
-import { AuroraBackground } from "@/components/shared/aurora-background";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -19,11 +16,11 @@ export const metadata: Metadata = {
   keywords: ["civil engineering consultants India","quantity surveying","project monitoring","technical due diligence","investment advisory real estate","BOQ preparation","construction cost estimation"],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
-  metadataBase: new URL("https://structurapro.in"),
+  metadataBase: new URL("https://www.saranyacivilconsulting.co.in"),
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://structurapro.in",
+    url: "https://www.saranyacivilconsulting.co.in",
     title: `${SITE_NAME} | Civil Engineering Consultants`,
     description: SITE_DESCRIPTION,
     siteName: SITE_NAME,
@@ -40,16 +37,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <body className="font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange={false}>
-          <PaletteProvider>
-            <div className="fixed inset-0 -z-10 pointer-events-none">
-              <AuroraBackground className="opacity-60" />
-            </div>
-            <CursorGlow />
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
-          </PaletteProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" forcedTheme="light" enableSystem={false} disableTransitionOnChange={false}>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

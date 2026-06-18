@@ -1,195 +1,220 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Monitor, ChevronDown } from "lucide-react";
-import { useTheme } from "next-themes";
-import { NAV_LINKS, SITE_NAME } from "@/lib/data";
+import {
+  Building2,
+  ChevronDown,
+  Clock,
+  Mail,
+  MapPin,
+  Menu,
+  Phone,
+  Ruler,
+  X,
+} from "lucide-react";
+import { NAV_LINKS } from "@/lib/data";
+import { ui } from "@/lib/design-system";
+import { brand } from "@/lib/site-content";
+import { useNavbarState } from "@/hooks/use-navbar-state";
+import { useSiteContact } from "@/hooks/use-site-contact";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [lastY, setLastY] = useState(0);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const { theme, setTheme } = useTheme();
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      setIsScrolled(currentY > 20);
-      setIsHidden(currentY > lastY && currentY > 100);
-      setLastY(currentY);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [lastY]);
-
-  const themeIcons: Record<string, typeof Sun> = { light: Sun, dark: Moon, system: Monitor };
-  const ThemeIcon = themeIcons[theme || "system"] || Monitor;
-
-  const cycleTheme = () => {
-    const themes = ["light", "dark", "system"];
-    const idx = themes.indexOf(theme || "system");
-    setTheme(themes[(idx + 1) % themes.length]);
-  };
+  const contact = useSiteContact();
+  const {
+    activeDropdown,
+    closeMobileMenu,
+    isHidden,
+    isScrolled,
+    mobileOpen,
+    pathname,
+    setActiveDropdown,
+    setMobileOpen,
+  } = useNavbarState();
 
   return (
     <>
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: isHidden ? -100 : 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      <header
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "bg-[var(--color-background)]/80 backdrop-blur-xl border-b border-[var(--color-border)] shadow-sm"
-            : "bg-transparent"
+          "fixed left-0 right-0 top-0 z-50 border-b border-[#C9D5E1] bg-white transition-all duration-300 will-change-transform",
+          isHidden ? "-translate-y-full" : "translate-y-0",
+          isScrolled && "shadow-[0_12px_36px_rgba(16,42,67,0.08)]"
         )}
       >
-        <div className="container-wide section-padding">
-          <div className="flex h-16 items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 group">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center">
-                <span className="text-white font-bold text-sm">{SITE_NAME.charAt(0)}</span>
-              </div>
-              <span className={cn(
-                "font-bold text-lg tracking-tight transition-colors",
-                isScrolled ? "text-[var(--color-foreground)]" : "text-[var(--color-foreground)]"
-              )}>
-                {SITE_NAME.split(" ")[0]}
-                <span className="text-[var(--color-accent)]">Pro</span>
+        <div className={ui.shell.topBar}>
+          <div className={`${ui.layout.container} flex h-10 items-center justify-between text-xs font-medium`}>
+            <div className="flex min-w-0 items-center gap-6">
+              <a
+                href={contact.phoneHref}
+                className={ui.shell.topBarItem}
+              >
+                <Phone className="h-3.5 w-3.5 text-[#F0B45B]" />
+                {contact.phone}
+              </a>
+              <a
+                href={contact.emailHref}
+                className={`${ui.shell.topBarItem} min-w-0`}
+              >
+                <Mail className="h-3.5 w-3.5 text-[#F0B45B]" />
+                <span className="truncate">{contact.email}</span>
+              </a>
+              <span className="inline-flex items-center gap-2 text-white/82">
+                <Clock className="h-3.5 w-3.5 text-[#F0B45B]" />
+                {contact.hours}
+              </span>
+            </div>
+            <div className="flex items-center gap-5">
+              <span className="inline-flex items-center gap-2 text-white/82">
+                <MapPin className="h-3.5 w-3.5 text-[#F0B45B]" />
+                {contact.shortLocation}
+              </span>
+              <Link
+                href="/contact"
+                className="inline-flex h-10 items-center bg-[#B66F12] px-4 text-xs font-bold uppercase tracking-[0.12em] text-white transition hover:bg-[#9A5D0F]"
+              >
+                Request Civil Review
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div className={ui.layout.container}>
+          <div className="flex h-[72px] items-center justify-between gap-6">
+            <Link href="/" className="group flex min-w-0 items-center gap-3">
+              <span className={ui.icon.mark}>
+                <Building2 className="h-5 w-5" />
+              </span>
+              <span className="min-w-0">
+                <span className="block truncate text-lg font-extrabold leading-tight text-[#102033]">
+                  {brand.shortName}
+                </span>
+                <span className="hidden text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[#6A7A89] sm:block">
+                  {brand.descriptor}
+                </span>
               </span>
             </Link>
 
-            {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-1">
-              {NAV_LINKS.map((link) => (
-                <div
-                  key={link.href}
-                  className="relative"
-                  onMouseEnter={() => link.children && setActiveDropdown(link.href)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <Link
-                    href={link.href}
-                    className={cn(
-                      "flex items-center gap-1 px-3.5 py-2 text-sm font-medium rounded-lg transition-all duration-200",
-                      pathname === link.href
-                        ? "text-[var(--color-accent)]"
-                        : "text-[var(--color-foreground)]/80 hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
-                    )}
-                  >
-                    {link.label}
-                    {link.children && <ChevronDown className="w-3 h-3 opacity-60" />}
-                  </Link>
+            <nav className="hidden items-center gap-1 xl:flex">
+              {NAV_LINKS.map((link) => {
+                const childLinks = "children" in link ? link.children : undefined;
 
-                  {/* Dropdown */}
-                  <AnimatePresence>
-                    {link.children && activeDropdown === link.href && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 8, scale: 0.96 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-56 bg-[var(--color-card)] border border-[var(--color-border)] rounded-xl shadow-xl shadow-black/10 overflow-hidden"
-                      >
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.href}
-                            href={child.href}
-                            className="block px-4 py-2.5 text-sm text-[var(--color-foreground)]/80 hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)] transition-colors first:pt-3 last:pb-3"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </motion.div>
+                return (
+                  <div
+                    key={link.href}
+                    className="relative"
+                    onMouseEnter={() => childLinks && setActiveDropdown(link.href)}
+                    onMouseLeave={() => setActiveDropdown(null)}
+                  >
+                    <Link
+                      href={link.href}
+                      className={cn(
+                        ui.shell.navLink,
+                        pathname === link.href ? ui.shell.navLinkActive : ui.shell.navLinkIdle
+                      )}
+                    >
+                      {link.label}
+                      {childLinks && <ChevronDown className="h-3.5 w-3.5 opacity-65" />}
+                    </Link>
+
+                    {childLinks && activeDropdown === link.href && (
+                      <div className="absolute left-0 top-full w-64 pt-3">
+                        <div className="overflow-hidden rounded-md border border-[#C9D5E1] bg-white shadow-[0_22px_60px_rgba(16,42,67,0.14)]">
+                          {childLinks.map((child) => (
+                            <Link
+                              key={`${child.href}-${child.label}`}
+                              href={child.href}
+                              className="block border-b border-[#EDF3F8] px-4 py-3 text-sm font-medium text-[#33465A] transition-colors last:border-b-0 hover:bg-[#F8FAFC] hover:text-[#102033]"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
                     )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                  </div>
+                );
+              })}
             </nav>
 
-            {/* Right actions */}
             <div className="flex items-center gap-2">
-              {/* Theme Toggle */}
-              <button
-                onClick={cycleTheme}
-                className={cn(
-                  "p-2 rounded-lg transition-colors",
-                  "text-[var(--color-foreground)]/70 hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
-                )}
-                aria-label="Toggle theme"
+              <Link
+                href="/services"
+                className={`${ui.button.compactSecondary} hidden md:inline-flex`}
               >
-                <ThemeIcon className="w-4 h-4" />
-              </button>
-
-              {/* CTA Button */}
+                <Ruler className="h-4 w-4 text-[#B66F12]" />
+                Services
+              </Link>
               <Link
                 href="/contact"
-                className="hidden sm:flex items-center gap-2 px-4 py-2 bg-[var(--color-accent)] hover:bg-[var(--color-accent)]/85 text-[var(--color-accent-foreground)] text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-[var(--color-accent)]/25"
+                className={`${ui.button.compactPrimary} hidden sm:inline-flex`}
               >
                 Get a Quote
               </Link>
-
-              {/* Mobile Menu Toggle */}
               <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className={cn(
-                  "lg:hidden p-2 rounded-lg",
-                  "text-[var(--color-foreground)]"
-                )}
+                onClick={() => setMobileOpen((open) => !open)}
+                className="rounded-md p-2 text-[#102033] transition hover:bg-[#EDF3F8] xl:hidden"
+                aria-label="Toggle navigation menu"
+                aria-expanded={mobileOpen}
               >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </button>
             </div>
           </div>
         </div>
-      </motion.header>
+      </header>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "100%" }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 lg:hidden"
-          >
-            <div
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-              onClick={() => setMobileOpen(false)}
-            />
-            <div className="absolute right-0 top-0 bottom-0 w-72 bg-[var(--color-card)] border-l border-[var(--color-border)] overflow-y-auto">
-              <div className="p-6 pt-20 space-y-1">
-                {NAV_LINKS.map((link) => (
+      {mobileOpen && (
+        <div className="fixed inset-0 z-40 xl:hidden">
+          <button
+            className="absolute inset-0 bg-[#102033]/45"
+            aria-label="Close navigation menu"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div className="absolute bottom-0 right-0 top-0 w-full max-w-sm overflow-y-auto border-l border-[#C9D5E1] bg-white shadow-2xl">
+            <div className="border-b border-[#C9D5E1] bg-[#102A43] p-5 pt-24 text-white">
+              <p className="text-sm font-semibold">Civil review desk</p>
+              <a
+                href={contact.phoneHref}
+                className="mt-3 flex items-center gap-2 text-sm text-white/86"
+              >
+                <Phone className="h-4 w-4 text-[#F0B45B]" />
+                {contact.phone}
+              </a>
+              <a
+                href={contact.emailHref}
+                className="mt-2 flex items-center gap-2 text-sm text-white/86"
+              >
+                <Mail className="h-4 w-4 text-[#F0B45B]" />
+                {contact.email}
+              </a>
+            </div>
+
+            <div className="space-y-1 p-5">
+              {NAV_LINKS.map((link) => {
+                const childLinks = "children" in link ? link.children : undefined;
+
+                return (
                   <div key={link.href}>
                     <Link
                       href={link.href}
-                      onClick={() => setMobileOpen(false)}
+                      onClick={closeMobileMenu}
                       className={cn(
-                        "block px-3 py-2.5 text-sm font-medium rounded-lg transition-colors",
+                        ui.shell.mobileLink,
                         pathname === link.href
-                          ? "text-[var(--color-accent)] bg-[var(--color-accent)]/10"
-                          : "text-[var(--color-foreground)]/80 hover:text-[var(--color-foreground)] hover:bg-[var(--color-muted)]"
+                          ? "bg-[#FFF4E4] text-[#9A5D0F]"
+                          : "text-[#33465A] hover:bg-[#EDF3F8] hover:text-[#102033]"
                       )}
                     >
                       {link.label}
                     </Link>
-                    {link.children && (
-                      <div className="ml-3 mt-1 space-y-0.5">
-                        {link.children.map((child) => (
+                    {childLinks && (
+                      <div className="ml-3 border-l border-[#D7E0E8] pl-3">
+                        {childLinks.map((child) => (
                           <Link
-                            key={child.href}
+                            key={`${child.href}-${child.label}`}
                             href={child.href}
-                            onClick={() => setMobileOpen(false)}
-                            className="block px-3 py-2 text-xs text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]/80 rounded-lg transition-colors"
+                            onClick={closeMobileMenu}
+                            className="block rounded-md px-3 py-2 text-xs font-medium text-[#5F7080] transition-colors hover:bg-[#F8FAFC] hover:text-[#102033]"
                           >
                             {child.label}
                           </Link>
@@ -197,21 +222,19 @@ export function Navbar() {
                       </div>
                     )}
                   </div>
-                ))}
-                <div className="pt-4">
-                  <Link
-                    href="/contact"
-                    onClick={() => setMobileOpen(false)}
-                    className="block text-center px-4 py-2.5 bg-[var(--color-accent)] text-[var(--color-accent-foreground)] font-semibold text-sm rounded-lg"
-                  >
-                    Get a Quote
-                  </Link>
-                </div>
-              </div>
+                );
+              })}
+              <Link
+                href="/contact"
+                onClick={closeMobileMenu}
+                className="mt-5 block rounded-md bg-[#102A43] px-4 py-3 text-center text-sm font-semibold text-white"
+              >
+                Request Civil Review
+              </Link>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </>
   );
 }

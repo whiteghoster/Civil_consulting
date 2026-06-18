@@ -2,31 +2,31 @@
 
 @theme {
   /* Light Mode */
-  --color-primary: #3730A3;
+  --color-primary: #102A43;
   --color-primary-foreground: #FFFFFF;
-  --color-secondary: #4C1D95;
+  --color-secondary: #40576B;
   --color-secondary-foreground: #FFFFFF;
-  --color-accent: #E8C468;
-  --color-accent-foreground: #2A1F03;
-  --color-background: #FAFAFB;
-  --color-foreground: #1E1B2E;
+  --color-accent: #B66F12;
+  --color-accent-foreground: #FFFFFF;
+  --color-background: #F8FAFC;
+  --color-foreground: #102033;
   --color-card: #FFFFFF;
-  --color-card-foreground: #1E1B2E;
-  --color-border: #E4E1F0;
-  --color-input: #E4E1F0;
-  --color-ring: #6D4FD6;
-  --color-muted: #F0EEF7;
-  --color-muted-foreground: #6B6580;
+  --color-card-foreground: #102033;
+  --color-border: #C9D5E1;
+  --color-input: #C9D5E1;
+  --color-ring: #102A43;
+  --color-muted: #EDF3F8;
+  --color-muted-foreground: #4E5F70;
   --color-destructive: #EF4444;
-  --color-gradient-from: #3730A3;
-  --color-gradient-to: #E8C468;
+  --color-gradient-from: #102A43;
+  --color-gradient-to: #B66F12;
 
   /* Typography */
   --font-sans: var(--font-geist-sans), Inter, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
 
   /* Border Radius */
-  --radius: 0.75rem;
+  --radius: 0.5rem;
 
   /* Animations */
   --animate-float: float 6s ease-in-out infinite;
@@ -86,21 +86,21 @@
 
 /* Dark Mode */
 .dark {
-  --color-primary: #6D4FD6;
+  --color-primary: #0B1F33;
   --color-primary-foreground: #FFFFFF;
-  --color-secondary: #9B7BE8;
-  --color-secondary-foreground: #15122A;
-  --color-accent: #F0CE7A;
-  --color-accent-foreground: #2A1F03;
-  --color-background: #0B0A14;
-  --color-foreground: #F4F2FA;
-  --color-card: #161325;
-  --color-card-foreground: #F4F2FA;
-  --color-border: #2A2640;
-  --color-input: #2A2640;
-  --color-ring: #9B7BE8;
-  --color-muted: #1F1B33;
-  --color-muted-foreground: #A39DBD;
+  --color-secondary: #A9B2BA;
+  --color-secondary-foreground: #101820;
+  --color-accent: #D79B38;
+  --color-accent-foreground: #201407;
+  --color-background: #0E151B;
+  --color-foreground: #F2EFE8;
+  --color-card: #151E26;
+  --color-card-foreground: #F2EFE8;
+  --color-border: #2C3843;
+  --color-input: #2C3843;
+  --color-ring: #D79B38;
+  --color-muted: #18232C;
+  --color-muted-foreground: #B6ADA0;
 }
 
 /* Base Styles */
@@ -124,7 +124,8 @@ body {
 
 /* Container */
 .container-wide {
-  max-width: 1400px;
+  width: 100%;
+  max-width: 1560px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -150,35 +151,99 @@ body {
 
 @media (min-width: 1280px) {
   .section-padding {
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 }
 
 @media (min-width: 1536px) {
   .section-padding {
-    padding-left: 6rem;
-    padding-right: 6rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
   }
 }
 
 /* Headings */
 .heading-display {
-  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-size: 2.75rem;
   font-weight: 800;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   line-height: 1;
 }
 
 .heading-xl {
-  font-size: clamp(1.875rem, 4vw, 3rem);
+  font-size: 2rem;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .heading-lg {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-size: 1.5rem;
   font-weight: 700;
+}
+
+.eyebrow {
+  color: #9A5D0F;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.section-title {
+  color: #102033;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+.body-copy {
+  color: #4E5F70;
+}
+
+.surface-card {
+  background: #FFFFFF;
+  border: 1px solid #C9D5E1;
+  box-shadow: 0 16px 44px rgba(16, 42, 67, 0.07);
+}
+
+.civil-rule {
+  background-image: linear-gradient(90deg, rgba(16, 42, 67, 0.12) 1px, transparent 1px);
+  background-size: 18px 1px;
+}
+
+.dark-panel {
+  background: #101C26;
+  color: #F7FAFC;
+}
+
+.dark-panel .eyebrow {
+  color: #E2A245;
+}
+
+.dark-panel .body-copy,
+.dark-panel .muted-on-dark {
+  color: rgba(247, 250, 252, 0.74);
+}
+
+.dark-panel .surface-card {
+  background: #FFFFFF;
+  color: #102033;
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.18);
+}
+
+@media (min-width: 768px) {
+  .heading-display {
+    font-size: 4.5rem;
+  }
+
+  .heading-xl {
+    font-size: 3rem;
+  }
+
+  .heading-lg {
+    font-size: 2.25rem;
+  }
 }
 
 /* Text Gradient */

@@ -91,42 +91,40 @@ function applyPalette(themeId: string, custom: CustomOverrides) {
 }
 
 export function PaletteProvider({ children }: { children: React.ReactNode }) {
-  const [themeId, setThemeIdState] = React.useState(DEFAULT_THEME_ID);
-  const [custom, setCustomState] = React.useState<CustomOverrides>({});
+  const [themeId, setThemeIdState] = React.useState(() => {
+    if (typeof window === "undefined") return DEFAULT_THEME_ID;
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME_ID;
+  });
+  const [custom, setCustomState] = React.useState<CustomOverrides>(() => {
+    if (typeof window === "undefined") return {};
+    try {
+      return JSON.parse(localStorage.getItem(CUSTOM_KEY) || "{}");
+    } catch {
+      return {};
+    }
+  });
 
   React.useEffect(() => {
-    const storedTheme = localStorage.getItem(STORAGE_KEY) || DEFAULT_THEME_ID;
-    let storedCustom: CustomOverrides = {};
-    try {
-      storedCustom = JSON.parse(localStorage.getItem(CUSTOM_KEY) || "{}");
-    } catch {
-      storedCustom = {};
-    }
-    setThemeIdState(storedTheme);
-    setCustomState(storedCustom);
-    applyPalette(storedTheme, storedCustom);
-  }, []);
+    applyPalette(themeId, custom);
+  }, [themeId, custom]);
 
   const setThemeId = React.useCallback((id: string) => {
     setThemeIdState(id);
     localStorage.setItem(STORAGE_KEY, id);
-    applyPalette(id, custom);
-  }, [custom]);
+  }, []);
 
   const setCustomColor = React.useCallback((key: keyof CustomOverrides, value: string) => {
     setCustomState((prev) => {
       const next = { ...prev, [key]: value };
       localStorage.setItem(CUSTOM_KEY, JSON.stringify(next));
-      applyPalette(themeId, next);
       return next;
     });
-  }, [themeId]);
+  }, []);
 
   const resetCustom = React.useCallback(() => {
     setCustomState({});
     localStorage.removeItem(CUSTOM_KEY);
-    applyPalette(themeId, {});
-  }, [themeId]);
+  }, []);
 
   return (
     <PaletteContext.Provider value={{ themeId, setThemeId, custom, setCustomColor, resetCustom, presets: THEME_PRESETS }}>

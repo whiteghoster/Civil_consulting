@@ -1,14 +1,24 @@
-# Civil Advisory Authority Theme
+# Saranya Civil Consulting Theme
 
-This document defines the reusable conversion theme for the civil consulting website. Use it when redesigning the homepage and every follow-up page, including Services, Projects, About, Contact, Career, and individual project pages.
+This document defines the visual, content, and interaction direction for the Saranya Civil Consulting website. Use it when redesigning the homepage and every follow-up page, including Services, Projects, About, Contact, Career, and individual project pages.
 
-## Direction
+## Core Direction
 
-The site should feel like a premium civil consulting firm, not a tech startup, SaaS dashboard, construction contractor brochure, or generic template.
+Saranya Civil Consulting should feel like a serious civil consulting practice, not a SaaS product, tech startup, construction contractor brochure, or generic portfolio template.
+
+The site must be:
+- Light-first.
+- White and blue based.
+- Civil engineering focused.
+- Project and proof led.
+- Premium, clean, and restrained.
+- Easy for developers, builders, and private project owners to trust quickly.
 
 Primary audience:
-- Developers and builders.
-- Private project owners with serious residential or commercial projects.
+- Developers.
+- Builders.
+- Real estate investors.
+- Private residential and commercial project owners.
 
 Core promise:
 
@@ -21,38 +31,64 @@ Secondary conversion action:
 - `View Services`
 
 Audience language:
-- Use `developers, builders, and private project owners`.
+- Use `developers, builders, investors, and private project owners`.
 - Avoid leading with `homeowners`; it makes the firm feel smaller and more residential-contractor focused.
 - When residential work is relevant, use `private residential project owners` or `residential project owners`.
 
-## Reference Logic
+## Market Comparison
 
-Do not copy another site pixel-for-pixel. Synthesize proven AEC and engineering patterns.
+Most credible civil, engineering, infrastructure, and AEC consulting websites do not look like dark SaaS products. They usually rely on light surfaces, white space, blue or navy authority colors, strong navigation, service taxonomies, real project photography, and proof of technical competence.
 
-Useful references:
-- Arup: expertise-first built environment authority.
-- AECOM: clear market, service, and project structure.
-- Colliers Engineering & Design: practical service categories and straightforward buyer navigation.
-- Landform-style AEC sites: strong real project and site photography throughout the page.
+Reference patterns to synthesize:
+- Colliers Engineering & Design uses practical buyer navigation around `Who We Are`, `What We Do`, `Projects`, `Markets`, `Careers`, `Locations`, and `Contact Us`. Its service structure is broad, explicit, and easy to scan.
+- AECOM and Stantec lead with infrastructure-scale authority, projects, insights, and sector expertise rather than abstract product styling.
+- WSB positions itself directly as an engineering, design, consulting, and civil engineering firm, with service categories that make the practice areas obvious.
+- Blue Engineering & Consulting presents direct service entry points such as engineering design, owner engineering, regulatory support, safety, and compliance.
+- Engineering/AEC website galleries consistently highlight real photography, project evidence, and service clarity as the strongest conversion signals.
 
 Reference URLs:
-- https://www.arup.com/en-us/
-- https://aecom.com/
 - https://colliersengineering.com/
-- https://www.ramboll.com/en-us
+- https://aecom.com/
+- https://www.stantec.com/en
+- https://www.wsbeng.com/
+- https://www.blueengineeringandconsulting.com/
 - https://www.windmillstrategy.com/best-engineering-aec-ed-epc-website-design-examples/
-- https://whitelam.media/insights/best-engineering-firm-websites-2026
+- https://openasset.com/resources/engineering-website-examples/
 
 Reusable lesson:
-- Lead with authority.
-- Make services easy to scan.
-- Use projects as proof.
-- Use real photography instead of abstract visuals.
+- Lead with authority, not hype.
+- Use white and pale blue surfaces as the base.
+- Make services easy to scan before asking users to contact.
+- Use projects, documents, site photography, and metrics as proof.
 - Make consultation feel like the natural next step.
+
+## Current Homepage Audit
+
+The current homepage has useful content foundations, but the feel is still too close to a SaaS/product landing page.
+
+Keep:
+- Service categories: Quantity Surveying, Project Monitoring, Technical Due Diligence, Investment Advisory.
+- Metrics and trust bar.
+- Project cards with type, location, value, and contribution.
+- Clear CTAs.
+- Lucide icons for scannable service cues.
+- Geist font if the implementation keeps it disciplined.
+
+Change:
+- Replace dark or tinted hero treatment with a white/light-blue civil consulting hero.
+- Remove animated blobs, ambient glows, aurora effects, bokeh, and decorative orbs.
+- Remove glassmorphism as a main card language.
+- Remove magnetic/ripple button effects from serious business CTAs.
+- Remove gradient text and shiny product-style treatments.
+- Remove palette-customizer/product-theme behavior from the public brand experience.
+- Reduce overly rounded SaaS buttons.
+- Replace `Watch Reel` and entertainment-style actions with consultation, service, project, and report-oriented actions.
+- Replace vague hero copy like `Building India's Future With Engineering Precision` with cost, risk, and oversight language.
+- Avoid claims like `India's Premier` or `Since 2020` unless verified and intentionally part of the brand.
 
 ## Brand Positioning
 
-The firm is an independent civil consulting partner that helps clients plan, estimate, monitor, and de-risk projects before cost overruns or site issues become expensive.
+Saranya Civil Consulting is an independent civil consulting partner that helps clients plan, estimate, monitor, and de-risk construction projects before cost overruns or site issues become expensive.
 
 Main proof themes:
 1. Cost certainty: BOQ, estimates, cost planning, tender review, value engineering.
@@ -66,6 +102,7 @@ Tone:
 - Precise.
 - Calm.
 - Evidence-led.
+- Locally credible.
 
 Avoid:
 - Startup hype.
@@ -73,74 +110,119 @@ Avoid:
 - Generic promises like `engineering excellence` without proof.
 - Overly dramatic construction language.
 - Casual homeowner-service copy.
+- Entertainment-led sections.
 
 ## Visual System
 
-Use a warm professional civil palette.
+The default theme is white and blue. The site can feel premium without being dark.
 
-Recommended colors:
-- Background: warm off-white / light concrete.
-- Primary text: charcoal.
-- Primary authority color: deep navy / steel blue-black.
-- Secondary surfaces: concrete gray, muted slate, light sand.
-- Accent and CTA: restrained safety amber.
+Recommended color direction:
+- Background: clean white.
+- Alternate background: very pale blue or cool concrete.
+- Primary text: deep charcoal/navy.
+- Primary authority color: civil navy / engineering blue.
+- Secondary color: steel blue / slate.
+- Accent and CTA marker: restrained amber or survey-orange, used sparingly.
+- Borders: cool concrete gray.
+- Cards: white on pale blue/concrete bands.
+
+Suggested tokens:
+- `--color-background`: `#FFFFFF`
+- `--color-foreground`: `#142033`
+- `--color-primary`: `#123A63`
+- `--color-primary-foreground`: `#FFFFFF`
+- `--color-secondary`: `#4F6B85`
+- `--color-secondary-foreground`: `#FFFFFF`
+- `--color-accent`: `#D9902F`
+- `--color-accent-foreground`: `#211404`
+- `--color-muted`: `#F2F7FB`
+- `--color-muted-foreground`: `#5D6B78`
+- `--color-card`: `#FFFFFF`
+- `--color-card-foreground`: `#142033`
+- `--color-border`: `#D8E2EA`
+- `--color-input`: `#D8E2EA`
+- `--color-ring`: `#123A63`
+- `--color-gradient-from`: do not use for heading text.
+- `--color-gradient-to`: do not use for heading text.
+
+Dark mode:
+- Do not make dark mode the brand default.
+- If dark mode remains in code, it must be secondary and should not drive homepage design decisions.
+- Public marketing pages should render as light-first unless the user explicitly toggles another mode.
 
 Avoid:
 - Purple SaaS palettes.
 - Neon gradients.
-- Glassmorphism as a dominant style.
-- Glowing blobs, bokeh, decorative orbs, and abstract tech effects.
-- Overuse of dark overlays that make photos hard to inspect.
-
-Suggested token direction:
-- `--color-background`: warm off-white.
-- `--color-foreground`: charcoal.
-- `--color-primary`: deep navy.
-- `--color-secondary`: slate / steel.
-- `--color-accent`: restrained amber.
-- `--color-muted`: light concrete.
-- `--color-border`: soft concrete gray.
-- `--color-card`: white or very light warm surface.
+- Dominant dark navy/black backgrounds.
+- Glassmorphism as the main visual language.
+- Glowing blobs, aurora backgrounds, bokeh, decorative orbs, and abstract tech effects.
+- Heavy dark overlays that make site photos hard to inspect.
+- One-note beige/sand treatment; blue should be the authority color.
 
 ## Typography
 
 Keep Geist unless the brand later needs a larger identity shift. The current font can feel premium when styled soberly.
 
 Rules:
-- Headings should be confident and architectural.
+- Headings should be confident, architectural, and practical.
 - Do not use gradient-highlighted words in headings.
 - Do not use futuristic or tech-like typography treatments.
-- Body copy should be direct and practical.
-- Labels can be small uppercase when they improve scanning, but avoid overusing them.
+- Body copy should be direct and outcome oriented.
+- Labels can be small uppercase when they improve scanning, but avoid using them on every element.
 - Numbers should feel like credentials, not entertainment.
+- Letter spacing should be 0 unless a tiny uppercase label needs restrained tracking.
 
 Recommended heading style:
 - Large, clear, low-decoration.
 - Tight but readable line-height.
-- No negative letter spacing beyond what already looks natural in the design system.
 - Strong hierarchy between page hero, section title, card title, and metadata.
+- No animated underline or shiny reveal treatments.
 
 ## Photography Direction
 
+The visual brand should be carried by credible civil consulting imagery, not abstract effects.
+
 Hero photo:
-- Engineers on-site reviewing drawings or plans.
-- Should show both human expertise and construction context.
-- Prefer real, well-lit site photography over abstract skylines.
+- Engineers reviewing drawings, plans, BOQ documents, or inspection notes on or near a real site.
+- Should show human expertise and construction context.
+- Use bright, inspectable photography with natural daylight.
+- Avoid hiding the image behind a dark overlay.
 
 Good image subjects:
-- Engineers reviewing plans on site.
+- Engineers reviewing drawings on site.
 - Site inspections.
-- Surveying and measurement.
+- Quantity surveying documents, measurement, and cost plans.
 - Structural work in progress.
-- Completed projects where details are visible.
-- Teams discussing drawings, costs, or project progress.
+- Completed residential, commercial, and infrastructure projects where details are visible.
+- Teams discussing drawings, costs, risks, or project progress.
 
 Avoid:
 - Generic dark crane silhouettes.
-- Stock business handshakes.
 - Pure skyline glamour shots.
-- Photos where the actual project context is unclear.
+- Stock business handshakes.
+- Photos where the actual civil/project context is unclear.
 - Heavy blur, heavy tint, or dark overlays that hide detail.
+
+## Layout Language
+
+The layout should feel like a premium civil advisory website, not a dashboard or app shell.
+
+Use:
+- Strong white hero with image support.
+- Crisp section bands in white and pale blue.
+- Clear grids for services, deliverables, and project proof.
+- Image-led project sections.
+- Tables or structured lists for deliverables where useful.
+- Narrow, readable copy blocks.
+- Generous but controlled spacing.
+
+Avoid:
+- Floating cards everywhere.
+- Cards inside cards.
+- Product dashboard panels as decoration.
+- Overly centered SaaS hero composition.
+- Full-page dark hero unless a specific real project photograph requires contrast.
+- Decorative grid backgrounds that feel like a software product.
 
 ## Motion And Interaction
 
@@ -149,61 +231,68 @@ Motion should feel restrained and professional.
 Use:
 - Subtle fade-up reveals.
 - Small hover state changes.
-- Clear active states.
+- Clear focus and active states.
 - Smooth but minimal transitions.
 
 Avoid:
 - Magnetic cursor effects.
+- Ripple buttons on core CTAs.
 - Playful blob movement.
 - Excessive parallax.
-- Floating cards for every section.
-- Animated counters unless they add clear credibility.
-- Anything that makes the firm feel like a tech product.
+- Animated counters unless the numbers are verified and add clear credibility.
+- Scroll gimmicks that distract from services and proof.
 
 ## Components
 
 Buttons:
-- Primary button: deep navy or amber depending on section contrast.
-- Button copy should be short: `Book a Consultation`, `View Services`, `Discuss Your Project`.
-- Use amber carefully as an action marker, not as a full-page color wash.
-- Keep radius moderate, closer to 8px than pill-shaped SaaS buttons.
+- Primary button: engineering blue or navy.
+- Secondary button: white with blue border.
+- Accent button: amber only in high-intent CTA sections.
+- Button copy should be short: `Book a Consultation`, `View Services`, `Discuss Your Project`, `Request a Cost Review`.
+- Keep radius moderate, closer to 6-8px than pill-shaped SaaS buttons.
+- Use icons only when they clarify the action.
 
 Cards:
-- Use simple bordered cards or clean surface blocks.
+- Use simple bordered cards on white or pale blue sections.
 - Use subtle shadow only when it helps hierarchy.
 - Avoid nested cards.
 - Avoid heavy glass effects.
+- Service cards should include problem, audience, and deliverable.
 - Project cards should be image-led and include concrete metadata.
 
 Section headers:
 - Use a short eyebrow only when it helps context.
-- Headline should explain the buyer value.
+- Headline should explain buyer value.
 - Supporting copy should clarify the service outcome.
 
 Metrics:
 - Use compact credential strips.
 - Prioritize meaning over animation.
-- Good metrics: projects delivered, years, project value monitored, city coverage, report turnaround.
+- Good metrics: projects delivered, years, project value monitored, client types, report turnaround.
+- Do not show inflated or unverified claims.
 
 Navigation:
 - Keep simple and buyer-oriented.
 - Primary nav should make Services, Projects, About, Contact easy to reach.
 - CTA should be visible: `Book a Consultation`.
+- Avoid app-like theme controls in the public nav.
 
 ## Homepage Structure
 
 Use this order:
 
 1. Hero
+   - Brand signal: `Saranya Civil Consulting`.
    - Headline: `Build with cost certainty and independent civil expertise.`
-   - Body: `Civil consulting for developers, builders, and private project owners who need cost clarity, technical confidence, and independent oversight.`
+   - Body: `Civil consulting for developers, builders, investors, and private project owners who need cost clarity, technical confidence, and independent oversight.`
    - Primary CTA: `Book a Consultation`
    - Secondary CTA: `View Services`
-   - Image: engineers reviewing drawings on-site.
+   - Visual: bright civil consulting/site image, not a dark product background.
 
 2. Trust bar
    - Compact credentials.
-   - Example metrics: `250+ projects delivered`, `15+ years experience`, `₹500Cr+ project value monitored`, `Developers, builders, and private project owners`.
+   - Example metrics: `250+ projects delivered`, `15+ years experience`, `₹500Cr+ project value monitored`, `Developers, builders, investors, and private project owners`.
+   - Only use metrics that are approved or clearly placeholder data.
 
 3. Services
    - Quantity Surveying & Cost Estimation.
@@ -224,7 +313,7 @@ Use this order:
    - Include project type, location, value, and the firm contribution.
    - If real client names are placeholders, avoid implying false endorsements.
 
-6. Why choose us
+6. Why choose Saranya Civil Consulting
    - Independent advice.
    - Cost control discipline.
    - Technical risk visibility.
@@ -343,6 +432,7 @@ Style:
 ## Copy Rules
 
 Prefer:
+- `Saranya Civil Consulting`
 - `cost certainty`
 - `independent oversight`
 - `technical confidence`
@@ -353,6 +443,10 @@ Prefer:
 - `technical due diligence`
 - `budget control`
 - `risk visibility`
+- `cost review`
+- `tender comparison`
+- `site audit`
+- `progress report`
 
 Avoid:
 - `future-proofing your vision`
@@ -362,12 +456,15 @@ Avoid:
 - `dashboard-first`
 - `next-gen`
 - `landmark` unless tied to real project evidence
+- `premier` unless substantiated
+- `watch reel` as a primary homepage action
 
 Sample headlines:
 - `Build with cost certainty and independent civil expertise.`
 - `Know the cost, risk, and progress before decisions become expensive.`
 - `Civil consulting that keeps projects clear, controlled, and accountable.`
 - `From BOQ to site monitoring, get independent clarity at every stage.`
+- `Independent civil advice for developers, builders, and private project owners.`
 
 Sample CTA copy:
 - `Book a Consultation`
@@ -379,13 +476,23 @@ Sample CTA copy:
 ## Current Site Changes Implied By This Theme
 
 Remove or reduce:
-- Purple-led color system.
-- Text gradients in headings.
-- Animated blobs and ambient glows.
-- Glass-card styling as the main card language.
-- Magnetic button effects.
-- Overly rounded SaaS buttons.
 - Dark tech-style hero treatment.
+- Purple-led or overly warm beige color systems.
+- Text gradients in headings.
+- Animated blobs, aurora effects, and ambient glows.
+- Glass-card styling as the main card language.
+- Magnetic and ripple button effects.
+- Overly rounded SaaS buttons.
+- Public palette/theme customizer behavior.
+- Decorative grid backgrounds that read like software tooling.
+
+Replace with:
+- White and pale-blue page base.
+- Engineering blue/navy authority color.
+- Bright site/project photography.
+- Simple bordered service and deliverable cards.
+- Project evidence and metadata.
+- Serious CTAs around consultation, services, cost review, and due diligence.
 
 Keep and refine:
 - Existing section component structure.
@@ -413,3 +520,4 @@ Quality bar:
 - Clear.
 - Built for conversion.
 - Civil consulting first, technology second.
+- White/blue by default, not dark SaaS by default.
